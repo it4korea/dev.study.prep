@@ -27,4 +27,6 @@
 
 이한국| leekorea09@gmail.com |
 
+김학일| hakil.kim@gmail.com | (연습)
+
 김학일| hakil.kim@gmail.com |
