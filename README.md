@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 tell me about u.
 ================
 
@@ -38,3 +36,5 @@ tell me about u.
 유경록|hi.raphael@gmail.com|
 
 홍두희|doohee323@gmail.com|
+
+이준헌 | for2ternity@gmail.com |
