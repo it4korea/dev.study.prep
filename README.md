@@ -1,7 +1,7 @@
+<<<<<<< HEAD
 
 tell me about u.
 ================
-
 
 이강훈| hunscompay@gmail.com | 
 
@@ -28,6 +28,12 @@ tell me about u.
 최현준| peinsiro@gmail.com |
 
 이한국| leekorea09@gmail.com |
+
+김학일| hakil.kim@gmail.com |
+
+김재진| nije1983@gmail.com |
+
+류용수| cloudr2@gmail.com |
 
 유경록|hi.raphael@gmail.com|
 
