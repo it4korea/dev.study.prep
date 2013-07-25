@@ -12,3 +12,7 @@ tell me about u.
 이범재| beomjae@gmail.com | 
 
 정규용| obliviscence@gmail.com |
+
+김대권| propellerheaven@gmail.com |
+
+
