@@ -22,4 +22,3 @@ tell me about u.
 박창진|crazevil@gmail.com|
 
 이의범| spearsky@gmail.com |
-
