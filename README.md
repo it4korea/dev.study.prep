@@ -48,3 +48,6 @@
 김수혁 | kimsuhyuk@gmail.com |
 
 방정현 | zahoku@gmail.com |
+
+김태경 | dev.bistros@gmail.com |
+
