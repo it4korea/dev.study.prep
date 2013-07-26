@@ -56,3 +56,6 @@
 공지훈 | sagehoon@gmail.com |
 
 변용훈 | yonghunbyun@gmail.com |
+
+김진영 | jingood2@gmail.com |
+
