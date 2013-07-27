@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>@Majestin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Members">
+    <meta name="author" content="Majestin">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="wrap">
+      <div class="container">
+          <div class="page-header">
+            <h1><a href="http://facebook.com/LeeHanGuk/">Majestin</a> - Members</h1>
+        </div>
+        <p class="lead">Backbone, Bootstrap을 이용한 멤버 관리 페이지 제작</p>
+        <p class="muted manual">사용방법..? 이름과 이메일을 적고 엔터를 치면 멤버가 등록이 됩니다. <br/> 삭제와 수정은 .. </p>
+
+
+
+        <div class="row-fluid member-container">
+            <div id="content" class="span12">
+                <div>
+                    <ul  class="thumbnails">
+                      <li>
+                        <div class="thumbnail plain" style="text-align: left;">
+                            <input type="text" class="input-block-level" placeholder="Name address">
+                            <input type="text" class="input-block-level" placeholder="Email address">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>    <!-- wrap end -->
+
+<div id="footer">
+    <div class="container">
+       <p class="muted credit">이 페이지는 해당 기술을 참고했습니다. <a href="http://documentcloud.github.com/backbone/"  target="_blank">Backbone.js</a>, <a href="http://twitter.github.com/bootstrap/"  target="_blank">Twitter Bootstrap</a>. <br/>
+        The source code for this application is available in <a href="https://github.com/it4korea/dev.study">this repository</a> on GitHub.</p>
+    </div>
+</div>
+
+
+<!-- Templates -->
+<script type="text/template" id="member-list-item">
+<div class="thumbnail plain" style="text-align: left;">
+<input type="text" class="input-block-level name" placeholder="Name" value='<%= name %>'>
+<input type="text" class="input-block-level email" placeholder="Email address" value='<%= email %>'>
+</div>
+</script>
+
+<script type="text/template" id="member-add-item">
+<div class="thumbnail plain" style="text-align: left;">
+<input type="text" class="input-block-level newName" placeholder="Name">
+<input type="text" class="input-block-level newEmail" placeholder="Email address">
+</div>
+</script>
+
+<script src="lib/jquery-1.7.2.min.js"></script>
+<script src="lib/underscore-min.js"></script>
+<script src="lib/backbone-min.js"></script>
+<script src="lib/bootstrap.min.js"></script>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>
