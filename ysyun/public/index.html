@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>YSYUN, DEV.STUDY</title>
+    <link rel="stylesheet" href="css/screen.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+
+<br>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Notice!</strong> This page is introduction about yun yougsik.
+    </div>
+    <div id="intro" class="span12">
+        <script id="introTemplate" type="text/template">
+            <img src="<%= coverImage %>"/>
+            <ul>
+                <li><%= title %></li>
+                <li><%= name %></li>
+                <li><%= bornDate %></li>
+                <li><%= keywords %></li>
+            </ul>
+        </script>
+    </div>
+  </div>
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/underscore.js"></script>
+<script src="js/backbone.js"></script>
+<script src="js/ride.js"></script>
+</body>
+</html>

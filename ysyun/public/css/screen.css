@@ -1,0 +1,9 @@
+css body { background-color: #eee; }
+
+.introContainer { border: 1px solid #aaa; width: 350px; height: 170px; background-color: #fff; float: left; margin: 5px; } 
+.introContainer img { float: left; margin: 10px; } 
+.introContainer ul {
+    list-style-type: none;
+    margin-bottom: 0;
+}
+
