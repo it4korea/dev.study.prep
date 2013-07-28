@@ -3,42 +3,9 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Index</title>
-		<link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet">
-		<link href="assets/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">	
-		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>	
-		<script type="text/javascript" src="assets/underscore.js"></script>
-		<script type="text/javascript" src="assets/backbone.js"></script>		
-		<script type="text/javascript">
-
-		
-
-			var Profile = Backbone.Model.extend({
-				initialize: function () {
-					console.log('model 생성');
-				},
-
-				defaults: {
-					name: '장재휴',
-					email: 'bbugguj@gmail.com'
-				}
-			});
- 
-			var myProfile = new Profile;
-
-			$(document).ready(function(){
-				$('#profile').html(getModelAttribute(myProfile));
-			});
-
-			function getModelAttribute(model){				
-				var message = "";
-				for(var attr in model.attributes){
-					message += attr + " : " + model.attributes[attr] + "<br>";
-				}				
-				return message;				
-			}
-
-			
-		</script>
+		<link href="libs/bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link href="libs/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">	
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>				
 	</head>
 	<body>
 		
@@ -52,16 +19,81 @@
   			</div>
   			<div class="tab-content">
     			<div class="tab-pane active" id="tab1">
-      				<p>Backbone.js + Bootstrap</p>
+      				<div id="detail_container"></div>
     			</div>
     			<div class="tab-pane" id="tab2">
-      				<div id='profile'/>
+    				<div id="search_container"></div>
     			</div>
   			</div>
 		</div>			
 		
 
-		<script src="assets/bootstrap/js/bootstrap.js"></script>
-		
+		<script type="text/javascript" src="js/libs/underscore/underscore-min.js"></script>
+		<script type="text/javascript" src="js/libs/backbone/backbone-min.js"></script>	
+		<script src="libs/bootstrap/js/bootstrap.js"></script>				
+
+		<script type="text/template" id="search_template">
+			<label>Search</label>
+			<input type="text" id="search_input" />
+			<input type="button" id="search_button" value="Search" />			
+		</script>
+
+		<script type="text/template" id="detail_template">
+			<label>Detail</label>
+		</script>
+
+		<script type="text/javascript">
+
+			var User = Backbone.Model.extend({
+				initialize: function () {
+					console.log('model 생성');
+				},
+
+				defaults: {
+					name: 'Not specified',
+					email: 'Not specified'
+				}
+			});			
+
+			var DetailView = Backbone.View.extend({
+				initialize: function(){
+					console.log('DetailView 생성');
+					this.render();
+				},
+				render: function(){
+					var template = _.template($("#detail_template").html(),{});
+					this.$el.html(template);
+				}
+			});
+
+			var SearchView = Backbone.View.extend({
+				initialize: function(){					
+					console.log('view 생성');
+					this.render();
+				},
+				render: function(){
+					//compile the template using underscore
+					var template = _.template($("#search_template").html(), {});
+					//load compiled HTML into the Backbone "el"									
+					this.$el.html( template );
+				}, events: {
+            		"click input[type=button]": "doSearch"
+        		},
+        		doSearch: function( event ){
+            		// Button clicked, you can access the element that was clicked withevent.currentTarget
+					alert( "Search for " + $("#search_input").val() );
+				}
+			});
+
+			var user = new User({name: "장재휴", email:"bbugguj@gmail.com"});
+			var detail_view = new DetailView({ model: user, el: $("#detail_container") });
+			var search_view = new SearchView({ el : $("#search_container") });
+
+			$(document).ready(function(){
+				detail_view.$el.append("aaa");
+			});
+
+		</script>
+
 	</body>
 </html>
