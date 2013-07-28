@@ -37,12 +37,21 @@
 
 		<script type="text/template" id="detail_template">
 
-			<label>Detail information</label>  
-			  <ul>
-			    <li>name: <%= user.get('name') %></li>
-			    <li>email: <%= user.get('email') %></li>			    
-			  </ul>
-
+			<h3>Detail information</h3>  
+			<%= html %>
+			<br><br>
+			<h4>Add Attributes</h4>  
+			<form id="addAttr">
+				<p>
+				attribute name: 
+				<input type="text" class="input-small" placeholder="Type attribute name" name="attr_name">
+				</p>
+				<p>
+				attribute value: 
+				<input type="text" class="input-small" placeholder="Type something…" name="attr_value">
+				</p>
+				<button type="submit" class="btn">Submit</button>
+			  </form>
 		</script>
 
 		<script type="text/javascript">
@@ -50,9 +59,13 @@
 			var User = Backbone.Model.extend({
 				initialize: function () {
 					console.log('model 생성');
+					this.on('change', function(){
+						detail_view.render();        				
+    				});
 				},
 
 				defaults: {
+					id: 'Not specified',
 					name: 'Not specified',
 					email: 'Not specified'
 				}
@@ -64,13 +77,32 @@
 					this.render();
 				},
 				render: function(){
-					var template = _.template($("#detail_template").html(),{user:this.model});
+					var html = "<ul>";
+					for(var attr in this.model.attributes){
+						html += "<li>" + attr + ": " + this.model.attributes[attr] + "</li>";
+					}
+					html += "</ul>";
+					var template = _.template($("#detail_template").html(),{html:html});					
 					this.$el.html(template);
+				},
+				events:{
+					"submit form" : "addAttr"
+				},
+				addAttr: function(ev){
+					ev.preventDefault();
+					var attr = $(ev.currentTarget).serializeArray()[0].value;
+					var value = $(ev.currentTarget).serializeArray()[1].value;
+					this.model.set(attr,value);
+					this.model.save();					
 				}
 			});			
 
-			var user = new User({name: "장재휴", email:"bbugguj@gmail.com"});
-			var detail_view = new DetailView({ model: user, el: $("#detail_container") });			
+			var user = new User({
+				id: "bbugguj", 
+				name: "장재휴", 
+				email:"bbugguj@gmail.com"				
+			});
+			var detail_view = new DetailView({ model: user, el: $("#detail_container") });
 
 		</script>
 
