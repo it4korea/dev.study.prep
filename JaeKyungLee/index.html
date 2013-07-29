@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="libs/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="libs/bootstrap/css/bootstrap-responsive.min.css">
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script src="libs/underscore/underscore.js"></script>
+	<script src="libs/bootstrap/js/bootstrap.min.js"></script>
+	<script src="libs/backbone/backbone.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<h3>Index <span class="label">Misson 3</span></h3>
+		<div class="well">
+			<h4>이름 : 이재경</h4>
+			<h5>나이 : 84년생 쥐띠 </h5>
+		</div>
+		<div class="alert alert-danger">
+			<p>잘 부탁드립니다.</p>
+		</div>
+
+	</div>
+	<script>
+		var test = Backbone.Model.extend({
+
+			initialize : function(){
+				console.log('What is backbone?')
+			}
+
+		});
+
+		$(function(){
+			var model = new test();
+		});
+	</script>
+</body>
+
+</html>
