@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Introduce myself</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./bootstrap/css/bootstrap.css" rel="stylesheet">
+  </head>
+
+  <body bgcolor="gray">    
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Mission 3</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Dev.Study</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="jumbotron" align="center" >
+        <h1>Who am I?</h1>
+  	<small><p class="text-danger">"I am dreaming of dream."</p></small>
+        <p class="lead">
+			<img src="https://www.dropbox.com/s/1tae0k84r6ahxf8/profile.jpg" width="300px" height="300px">
+			<br>
+			<span class="label">SeongHo</span>
+			<span class="label label-success">Lee</span>
+			<span class="label label-warning">(30)</span>
+			<span class="label label-danger">Beginner</span>
+			<span class="label label-info">Developer</span>
+			<br>
+			  
+		</p>
+	  </div>
+			
+    <center><button id="add-friend" type="button" class="btn btn-default">Click!!</button></center>
+
+    <ul id="friends-list">
+    </ul>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.4/underscore-min.js"></script>
+    <script src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js"></script>
+
+    <script>
+    (function ($) {
+      
+      Friend = Backbone.Model.extend({
+        name: null
+      });
+      
+      Friends = Backbone.Collection.extend({
+        initialize: function (models, options) {
+          this.bind("add", options.view.addFriendLi);
+        }
+      });
+      
+      AppView = Backbone.View.extend({
+        el: $("body"),
+        initialize: function () {
+          this.friends = new Friends( null, { view: this });
+        },
+        events: {
+          "click #add-friend":  "addFriendLi",
+        },
+        addFriendLi: function () {
+          $("#friends-list").append("<br><div class='panel panel-info'>In Daewoo Informaition Systems.</div>");
+          $("#friends-list").append("<div class='panel panel-success'>Experience for 3 years on SI projects.</div>");
+          $("#friends-list").append("<div class='panel panel-success'>Wannabe Dream of a coooool developer.</div>");
+          $("#friends-list").append("<div class='panel panel-success'>Twitter : @sh_domac <br> mail: seongho.com@gmail.com</div>");
+        }
+      });
+      
+      var appview = new AppView;
+    })(jQuery);
+    </script>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>
+
