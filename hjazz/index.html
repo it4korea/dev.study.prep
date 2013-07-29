@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>@HJazz</title>
+	
+    <!-- Backbone -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <script src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+    <script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.6/underscore-min.js"></script>
+    <script src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js"></script>
+    
+    <!-- Bootstrap -->
+    <!-- <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet"> -->
+    <!-- <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
+    <!-- Latest compiled and minified CSS -->
+    <!--link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" rel="stylesheet"-->
+    <!-- Latest compiled and minified JavaScript -->
+    <!--script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script-->
+
+	  <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="stickyfooter.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <!-- Part 1: Wrap all page content here -->
+    <div id="wrap">
+
+      <!-- Begin page content -->
+      <div class="container">
+        <div class="page-header">
+          <h1>Sung Hyun Jun</h1>
+        </div>
+        <p class="lead">Hello. This is backbone.js+bootstrap profile page.</p>
+        <p id="mycontent"></p>
+      </div>
+
+      <div id="push"></div>
+      
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">Example courtesy <a href="http://martinbean.co.uk">Martin Bean</a> and <a href="http://ryanfait.com/sticky-footer/">Ryan Fait</a>.</p>
+      </div>
+    </div>
+
+  	<script type="text/javascript">
+  		// backbone here
+      (function($){
+        MyView = Backbone.View.extend({
+        el:$('#mycontent'),
+        initialize: function() {
+          _.bindAll(this,'render');
+          this.render();
+        },
+        render: function(){
+          $(this.el).append("안녕하세요. 성현준입니다. 이거 제대로 하고 있는건지 모르겠네요. backbone,bootstrap 개념탑제가 아직 안되서;;;");
+        }
+      });
+
+      var my_view = new MyView();
+      })(jQuery);
+      
+  	</script>
+    
+  </body>
+  </html>
