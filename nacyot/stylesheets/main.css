@@ -1,0 +1,12 @@
+body {
+    padding-top: 60px;
+}
+
+.jumbotron{
+    background-color: black;
+    color: red;
+}
+
+.text{
+    text-align: justify;
+}
