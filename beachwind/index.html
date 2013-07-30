@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Off canvas template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="example.css" rel="stylesheet">
+	
+	
+	<link rel="stylesheet" type="text/css" href="./lib/editor.css">
+<script type="text/javascript" src="./lib/jquery.min.js"></script>
+<script type="text/javascript" src="./lib/underscore-min.js"></script>
+<script type="text/javascript" src="./lib/backbone-min.js"></script>
+<script type="text/javascript" src="./lib/editor_welcom.js"></script>
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="https://github.com/it4korea/dev.study">DEV.STUDY</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="https://github.com/beachwind/dev.study">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="row row-offcanvas row-offcanvas-right">
+        <div class="col-lg-9">
+          <p class="pull-right hidden-lg">
+            <button type="button" class="btn btn-primary btn-offcanvas" data-toggle="offcanvas"><i class="glyphicon glyphicon-resize-horizontal"></i></button>
+          </p>
+          <div class="jumbotron">
+            <h1>Welcome!</h1>
+            <p>I'm Yoo GyeongRok</p>
+          </div>
+        
+        </div><!--/span-->
+        <nav class="col-lg-3 sidebar-offcanvas" id="sidebar" role="navigation">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Hi</li>
+             
+            </ul>
+          </div><!--/.well -->
+        </nav><!--/span-->
+      </div><!--/row-->
+
+	  
+	  <div id="page" style="width:2000px;height:2000px;">
+		</div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; DEV.STUDY 2013</p>
+      </footer>
+
+    </div><!--/.container-->
+
+    <script src="./lib/example.js"></script>
+  </body>
+</html>

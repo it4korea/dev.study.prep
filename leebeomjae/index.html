@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>leebeomjae</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/main.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">DEV.STUDY</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#aboutme">About Me</a></li>
+            <li><a href="#members">Members</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="main">
+        <h1>DEV.STUDY</h1>
+      </div>
+
+	  <div id="aboutme">
+		<div class="panel">
+		  <div class="panel-heading">
+			<h3 class="panel-title">About Me</h3>
+		  </div>
+		  <p>이범재 beomjae@gmail.com</p>
+		</div>
+	  </div>
+
+	  <div id="members">
+		<div class="panel">
+		  <div class="panel-heading">
+			<h3 class="panel-title">Members</h3>
+		  </div>
+		  <ul id="memberlist">
+		  </ul>
+		</div>
+		
+	  </div>
+
+    </div><!-- /.container -->
+
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script>
+	
+
+	<script type="text/javascript">
+		$(function(){
+			_.templateSettings = {
+			  interpolate : /\{\{(.+?)\}\}/g
+			};
+
+			var Person = Backbone.Model.extend({
+				defaults: {
+					name : 'leebeomjae',
+					email : 'beomjae@gmail.com'
+				},
+				
+				validate: function(attributes){
+					if(!attributes.name) {
+						return 'Every person must have a name.';
+					}
+
+					if(!attributes.email) {
+						return 'Every person must have a email';
+					}
+				}
+			});
+
+			var PeopleCollection = Backbone.Collection.extend({
+				model: Person
+			});
+
+			var PeopleView = Backbone.View.extend({
+				tagName: 'ul',
+				initialize: function(){
+					console.log(this.collection);
+				},
+
+				render: function(){
+					this.collection.each(function(person){
+						var personView = new PersonView({model: person});
+						this.$el.append(personView.render().el);
+					},this);
+					return this;
+				}
+			});
+
+			var PersonView = Backbone.View.extend({
+				tagName: 'li',
+				
+				my_template: _.template('<strong>{{ name }}</strong> - {{ email }}'),
+
+				render: function(){
+					this.$el.html(this.my_template(this.model.toJSON()));
+					return this;
+				}
+
+			});	
+
+			var peopleCollection = new PeopleCollection([
+				{ name: '이강훈', email:'hunscompay@gmail.com'},
+				{ name: '민동국', email:'dk.min7@gmail.com'},
+				{ name: '김성준', email:'me@kimseongjun.co.kr'},
+				{ name: '최완복', email:'choi@wanbok.com'},
+				{ name: '이범재', email:'beomjae@gmail.com'},
+				{ name: '정규용', email:'obliviscence@gmail.com'},
+				{ name: '이강훈', email:'hunscompay@gmail.com'}
+			]);
+
+
+			var peopleView = new PeopleView({ collection: peopleCollection });
+			$('#memberlist').html(peopleView.render().el);
+		});
+	</script>
+  </body>
+</html>

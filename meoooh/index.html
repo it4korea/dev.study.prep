@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mission3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+    <hr>
+    <h3>I want</h3>
+    
+    <ul id="iWant">
+      <div id="addSomething">
+      <input placeholder="입력하시오." type="text" id="something" />
+      <button class="btn" id="add">추가</button>
+    </div>
+    </ul>
+    <script id="template" type="text/template">
+      <span><%= something %></span>
+    </script>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="http://underscorejs.org/underscore.js"></script>
+    <script src="http://backbonejs.org/backbone.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script>
+      (function ($){
+        //model
+        var SomethingM = Backbone.Model.extend({
+          default:{
+            something: "Make a good Friends."
+          }
+        });
+
+        //view
+        var SomethingV = Backbone.View.extend({
+          tagName: "li",
+          className: "st",
+          template: $("#template").html(),
+          render: function(){
+            var tmpl = _.template(this.template);
+
+            this.$el.html(tmpl(this.model.toJSON()));
+
+            return this;
+          }
+        });
+
+        /*var somethingM = new SomethingM({
+          something: "Study Rails."
+        });
+
+        somethingV = new SomethingV({
+          model: somethingM
+        });
+
+        $("#iWant").html(somethingV.render().el);*/
+
+        var somethingsM = [
+          {something: "Make a Good Friends."},
+          {something: "Drink beer."},
+          {something: "Study Rails."}
+        ];
+
+        //collection
+        var SomethingsM = Backbone.Collection.extend({
+          model: SomethingM
+        });
+
+        var SomethingsV = Backbone.View.extend({
+          el: $("#iWant"),
+          initialize: function(){
+            this.collection = new SomethingsM(somethingsM);
+            this.render();
+            this.collection.on("add", this.renderSomething, this);
+          },
+          render: function(){
+            var that = this;
+            _.each(this.collection.models, function(item){
+              that.renderSomething(item);
+            }, this);
+          },
+          renderSomething: function(item){
+            var view = new SomethingV({
+              model: item
+            });
+            this.$el.append(view.render().el);
+          },
+          addSomething: function(e){
+            e.preventDefault();
+
+            var formData = {};
+
+            $("#addSomething").children("input").each(function(i, el){
+
+              if($(el).val() == ""){
+                return false;
+              }
+              console.log("$(el).val(): "+$(el).val());
+              formData[el.id] = $(el).val();
+            });
+            this.collection.add(new SomethingM(formData));
+          },
+
+          events: {
+            "click #add": "addSomething"
+          }
+        });
+
+        var somethingsV = new SomethingsV();
+        $("#add").click(somethingsV.addSomething);
+      })(jQuery);
+    </script>
+  </body>
+</html>
