@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+<title>Dev.Study Mission</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap -->
+<link href="common/css/bootstrap.min.css" rel="stylesheet"
+	media="screen">
+<link href="common/css/stylebootstrap.css" rel="stylesheet"
+	media="screen">
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="brand" href="./index2.html">Topzone 2013</a>
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li class="active"><a href="./index2.html">Home</a></li>
+						<li class=""><a href="#login">login</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container container-content">
+		<header class="jumbotron subhead" id="overview">
+			<div class="row">
+				<div class="page-header">
+					<h1>홍두희</h1>
+				</div>
+				<div class="span8">
+					<p class="lead">Hello, Dev.study</p>
+					<p>J2EE 기반 Software architect 입니다. 대형 SI에서 SWA 또는 총괄 Archi역할을 해왔습니다.</p>
+					<p>ROR 에대해서 관심이 갑니다. 스크립트 언어는 Groovy와 node.js 약간을 써봤습니다. Redis와 MongoDB도 약간 써봤네요.</p>
+					<p>UI는 jquery 로 모바일 웹앱 프로젝트를 수행해봤습니다. 새로운 기술에 대해 관심이 많습니다. 잘 부탁드립니다~.</p>
+				</div>
+
+				<div class="span4">
+					<div class="bsa well">
+						<div>
+							<div class="bsa_it one">
+								<div>
+									<address>
+										<strong>Full Name</strong><br> <span>Dewey Hong</span>
+									</address>
+									<address>
+										<strong>Facebook</strong><br> <span>https://www.facebook.com/doohee323</span>
+									</address>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<section id="login">
+			<div class="page-header">
+				<h1>login</h1>
+			</div>
+			<!-- Headings & Paragraph Copy -->
+			<div class="row-fluid member-container">
+				<div id="content" class="span12">
+					<form id='loginForm' name='loginForm' method='post'>
+					<ul id="loginUL">
+						<div id="loginDiv">
+							<input placeholder="ID" type="text" id="userId" value="lhfadm"  />
+							<input placeholder="PSWD" type="text" id="userPwd" value="fhtep"  />
+							<button class="btn" id="add">추가</button>
+						</div>
+					</ul>
+					</form>
+					<script id="template" type="text/template">
+      					<span><%= msg %></span>
+    				</script>
+				</div>
+			</div>
+		</section>
+		<hr>
+		<footer id="footer">
+			<div class="row">
+				<div class="span12">
+					<h3>Ref.</h3>
+					<address>
+						<p class="muted credit">
+							이 페이지는 mistari, meoooh님의 소스를 참고했습니다. 
+						</p>
+					</address>
+				</div>
+			</div>
+			<p class="pull-right">
+				<a href="#top">Back to top</a>
+			</p>
+
+		</footer>
+	</div>
+
+	<form name='f' id='f' action='j_spring_security_check?pt=true' method='POST'>
+		<input type="hidden" id="j_username" name="j_username"/>
+		<input type="hidden" id="j_password" name="j_password" value="" />
+		<input type="hidden" id="source" name="source" value="web">
+		<input type="hidden" id="loclCd" name="loclCd" value="ko_KR">
+	</form>
+
+	<!-- Templates -->
+	<script id="template" type="text/template">
+      <span><%= msg %></span>
+    </script>
+
+	<script src="common/js/jquery-1.10.2.min.js"></script>
+	<script src="common/js/underscore.min.js"></script>
+	<script src="common/js/bootstrap.min.js"></script>
+	<script src="common/js/respond.min.js"></script>
+	<script src="common/js/backbone.min.js"></script>
+
+	<script src="common/js/main.js"></script>
+
+</body>
+</html>
