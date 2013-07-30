@@ -2,23 +2,52 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />		
 	<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
 
 </head>
+<script src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript" src="js/underscore.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/backbone.js"></script>
+<!-- Optionally enable responsive features in IE8 -->
+<script src="js/respond.min.js"></script>
+
 <script type="text/javascript">
-var harry = new Backbone.Model({
-  name: "Harry Kim",
-  
+
+var Profile = Backbone.Model.extend({});
+var profile = new Profile( { name: 'Harry Kim', title: 'Hacker', group: 'dev.study' } );
+var ProfileView = Backbone.View.extend({
+	render: function(){
+		var html = '<h3>' + this.model.get('name') + '</h3>';
+		$(this.el).html(html);
+		}
 });
+var profileView = new ProfileView({model:profile});
+profileView.render();
+console.log(profileView.el);
 </script>
 <body>
-Name : Harry Kim
-<br>Title : Software engineer at Havok
-<br>Group : dev.study
+<header>
+<nav class="nav nav-pills">
+  <li class="active"><a href="#Home">Home</a></li>
+  <li><a href="#Profile">Profile(WIP)</a></li>
+  <li><a href="#">Messages(WIP)</a></li>
+</nav>
+</header>
+
+<nav id=Home>
+
+<p>Name : Harry Kim</p>
+<p>Title : Software Engineer</p>
+<p>Group : dev.study</p>
+
+</nav>
+
+<nav id=Profile>
+</nav>
+
 </body>
 </html>
