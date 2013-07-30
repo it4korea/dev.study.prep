@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" class="btn btn-success"content="text/html; charset=utf-8" class="btn btn-success"/>
+<title>ZAHOKU - DEV.STUDY</title>
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" class="btn btn-success"rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/json3/3.2.4/json3.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<style type="text/css">
+	@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+	html {
+		height: 100%;
+	}
+	html * {
+		font-family: NanumGothic, 나눔고딕, "Malgun Gothic", "맑은 고딕", Tahoma, Geneva, sans-serif;
+	}
+	body > h1 {
+		border-bottom: solid 1px #CCC;
+	}
+	body > article > section > h1 {
+		font-size: 1.5em;
+		background: #00a0c2;
+		font-weight: bold;
+		padding: .5em;
+		color: #FFF;
+		border-radius: 5px;
+		text-shadow: 0 0 2px rgba(0, 0, 0, .5);
+	}
+	body > article > section > h1:first-child {
+		margin-top: 10px;
+	}
+	.m3CompleteList li:after { content: ''; display: block; clear: both; }
+	.m3CompleteList li .btn {
+		float: right;
+		padding: 0 6px 4px 6px;
+	}
+	.m3CompleteList li .id {
+		display: inline-block;
+		vertical-align: middle;
+		font-weight: bold;
+	}
+	.m3CompleteList .list-group-item {
+		padding: 5px 10px;
+	}
+</style>
+<script type="text/javascript" charset="utf-8">
+	var m3IdJson = [{
+					id: 'bbugguj'},{
+					id: 'beachwind'},{
+					id: 'crazevil'},{
+					id: 'dkmin'},{
+					id: 'doo'},{
+					id: 'doohee323'},{
+					id: 'ephemera'},{
+					id: 'frozenrain.yoo'},{
+					id: 'hjazz'},{
+					id: 'hokunbaek'},{
+					id: 'insomous'},{
+					id: 'JaeKyungLee'},{
+					id: 'jeongseunghwan'},{
+					id: 'kimhakhyun'},{
+					id: 'kimsuhyuk'},{
+					id: 'kongjihoon'},{
+					id: 'leebeomjae'},{
+					id: 'majestin'},{
+					id: 'meoooh'},{
+					id: 'mistari'},{
+					id: 'nacyot'},{
+					id: 'nije'},{
+					id: 'ryoo_mission3'},{
+					id: 'seonghoLee'},{
+					id: 'spearsky'},{
+					id: 'victorkim'},{
+					id: 'wanbokchoi'},{
+					id: 'xxyy21'},{
+					id: 'yeonsik'},{
+					id: 'yhbyun'},{
+					id: 'ysyun'},{
+					id: 'zahoku'
+				}];
+	$(window).ready(function(){
+		console.log('-----------------------------	window.ready	--------------------------------------');
+		
+
+
+		var m3CompleteList = $('#m3CompleteList'),
+			Member = Backbone.Model.extend({
+				default: {
+					id:''
+				}
+			}),
+			MemberCollection = Backbone.Collection.extend({
+				model: Member
+			}),
+			MemberView = Backbone.View.extend({
+				initialize: function () {
+        			_.bindAll(this, 'render');
+					this.collection.bind('all', this.render);
+				},
+				render: function (type, data) {
+					switch(type) {
+					case 'reset':
+						var arr = data.models,
+							model = null,
+							attrs = null,
+							htmlStr = '';
+						for (var i = 0, max = arr.length; i < max; ++i) {
+							model = arr[i];
+							attrs = model.attributes;
+							htmlStr += '<li class="list-group-item">';
+							htmlStr += '		<span class="id">' + attrs.id + '</span>';
+							htmlStr += '		<a type="button" class="btn btn-success" href="' + attrs.id + '">';
+							htmlStr += '			<span>success</span>';
+							htmlStr += '		</a>';
+							htmlStr += '</li>';
+						}
+						m3CompleteList.append(htmlStr);
+					break;
+					default:
+					
+					}
+				}
+			}),
+			memberCollection = new MemberCollection(m3IdJson),
+			memberView = new MemberView({
+				collection: memberCollection
+			});
+		memberCollection.reset(m3IdJson);
+	});
+</script>
+</head>
+<body>
+<h1>DEV.STUDY</h1>
+<article class="container mission3">
+	<section>
+		<h1>미션3단계 완료자, 명예의 전당!!</h1>
+		<div class="container">
+			<ul class="list-group m3CompleteList" id="m3CompleteList">
+			</ul>
+		</div>
+	</section>
+</article>
+
+
+</body>
+</html>
