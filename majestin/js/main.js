@@ -4,6 +4,7 @@ window.Member = Backbone.Model.extend({
 		'name':'default name',
 		'email':'default email'
 	}
+
 });
 
 //Collections
@@ -46,6 +47,7 @@ window.MemberListItemView = Backbone.View.extend({
 	initialize:function () {
 		this.model.bind("change", this.render, this);
 		this.model.bind("destroy", this.close, this);
+
 	},
 
 	render:function (eventName) {
@@ -54,10 +56,18 @@ window.MemberListItemView = Backbone.View.extend({
 		return this;
 	},
 
+	events: {
+		"click .deleteBtn":"removeItem"
+	},
 
 	close:function () {
 		$(this.el).unbind();
 		$(this.el).remove();
+	},
+
+	removeItem: function() {
+		memberList.remove( this.model );
+    	$('#content').html(memberListView.render().el);
 	}
 });
 
@@ -84,6 +94,7 @@ window.MemberAddView = Backbone.View.extend({
 	},
 
 	focusEmail:function (event) {
+		console.log(event);
 		if (event.keyCode == 13) {
 			//enter 입력
 			$('.newEmail').focus();
