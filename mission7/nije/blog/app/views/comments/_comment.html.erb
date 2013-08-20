@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="span9">
+		<h3><%= comment.commenter %></h3>
+    <div class="row">
+			<div class="span6"><%= comment.body %></div>
+			<div class="span3">
+				<%= link_to 'Destroy Comment', [comment.post, comment],
+               method: :delete, class: "btn btn-small", 
+               data: { confirm: 'Are you sure?' } %>
+			</div>
+    </div>
+  </div>
+</div>
