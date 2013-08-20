@@ -1,0 +1,24 @@
+<div class="page-header">
+	<h1>Show post <small>read</small></h1>
+</div>
+
+<div class="hero-unit">
+	<h3><%= @post.title %></h3>
+	<p><%= @post.text %>
+</div>
+
+<div class="page-header">
+	<h2>Comments</h2>
+</div>
+<%= render @post.comments %>
+
+<div class="page-header">
+	<h2>Add a comment</h2>
+</div>
+<%= render "comments/form" %>
+
+<div class="btn-group">
+	<%= link_to 'Edit Post', edit_post_path(@post), class: "btn btn-large" %>
+	<%= link_to 'Back', posts_path, class: "btn btn-large"%>
+</div>
+

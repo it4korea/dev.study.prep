@@ -1,0 +1,11 @@
+<%= form_for([@post, @post.comments.build]) do |f| %>
+  <p>
+    <%= f.text_field :commenter, placeholder: "Commenter" %>
+  </p>
+  <p>
+    <%= f.text_area :body, placeholder: "Body" %>
+  </p>
+  <p>
+    <%= f.submit class: "btn btn-small" %>
+  </p>
+<% end %>
