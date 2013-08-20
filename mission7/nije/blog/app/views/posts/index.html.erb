@@ -1,0 +1,26 @@
+<div class="page-header">
+	<h1>Listing posts <small>Timeline</small></h1>
+</div>
+
+<%= link_to 'New Post', new_post_path, class: "btn btn-large" %><br />
+
+<p> <table class="table table-striped"> 
+  <tr>
+    <th>Title</th>
+    <th colspan="2">Text</th>
+  </tr>
+ 
+  <% @posts.each do |post| %>
+    <tr>
+      <td width="20%"><%= post.title %></td>
+      <td width="70%"><%= post.text %></td>
+			<td>
+				<div class="btn-group">
+					<%= link_to 'Show', post_path(post), class: "btn btn-small" %>
+					<%= link_to 'Edit', edit_post_path(post), class: "btn btn-small" %>
+					<%= link_to 'Destroy', post_path(post), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-small" %>
+				</div>
+			</td>
+    </tr>
+  <% end %>
+</table> </p>
